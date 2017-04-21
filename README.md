@@ -1,4 +1,4 @@
-# Java Grande JMH
+# Java Grande JMH benchmark suite
 This is port of **Java Grande** benchmark suite (https://www.epcc.ed.ac.uk/research/computing/performance-characterisation-and-benchmarking/java-grande-benchmark-suite) rewritten with **Java Microbenchmark Harness** (JMH - http://openjdk.java.net/projects/code-tools/jmh/).
 
 All suites are rewritten to be as close as possible to original **Java Grande**.
