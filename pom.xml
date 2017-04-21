@@ -8,7 +8,7 @@
 <version>1.0-SNAPSHOT</version>
 <packaging>jar</packaging>
 
-<name>Auto-generated JMH benchmark</name>
+<name>Java Grande JMH benchmark suite</name>
 
 <prerequisites>
     <maven>3.0</maven>
@@ -31,8 +31,8 @@
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jmh.version>1.18</jmh.version>
-    <javac.target>1.6</javac.target>
-    <uberjar.name>benchmarks</uberjar.name>
+    <javac.target>1.7</javac.target>
+    <uberjar.name>java-grande-jmh-all</uberjar.name>
 </properties>
 
 <build>
