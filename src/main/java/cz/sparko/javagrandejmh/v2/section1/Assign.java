@@ -24,7 +24,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 
 @SuppressWarnings("ALL")
 public class Assign {
-    private static final int INITSIZE = 10000;
+    static final int INITSIZE = 10000;
 
     static int a1 = 1, a2 = 2, a3 = 3, a4 = 4, b[] = {1, 2, 3, 4};
 
@@ -54,29 +54,12 @@ public class Assign {
         return e1;
     }
 
-//    @Benchmark
-//    public int sameScalarInstance() {
-//        for (int i = 0; i < INITSIZE; i++) {
-//            c1 = c2;
-//            c2 = c3;
-//            c3 = c4;
-//            c4 = c1;
-//            c1 = c2;
-//            c2 = c3;
-//            c3 = c4;
-//            c4 = c1;
-//            c1 = c2;
-//            c2 = c3;
-//            c3 = c4;
-//            c4 = c1;
-//            c1 = c2;
-//            c2 = c3;
-//            c3 = c4;
-//            c4 = c1;
-//        }
-//
-//        return c1;
-//    }
+    @Benchmark
+    public int sameScalarInstance() {
+        // In JMH we can't have instance variables, so we're creating instance of another class here and all benchmark
+        // code is there. Overhead is insignificant.
+        return new AssignClassInstanceTester().sameScalarInstance();
+    }
 
     @Benchmark
     public int sameScalarClass() {
@@ -128,45 +111,12 @@ public class Assign {
         return f;
     }
 
-//    @Benchmark
-//    public int[] sameArrayInstance() {
-//        for (int i=0; i<INITSIZE; i++){
-//            d[0]=d[1];
-//            d[1]=d[2];
-//            d[2]=d[3];
-//            d[3]=d[0];
-//            d[0]=d[1];
-//            d[1]=d[2];
-//            d[2]=d[3];
-//            d[3]=d[0];
-//            d[0]=d[1];
-//            d[1]=d[2];
-//            d[2]=d[3];
-//            d[3]=d[0];
-//            d[0]=d[1];
-//            d[1]=d[2];
-//            d[2]=d[3];
-//            d[3]=d[0];
-//            d[0]=d[1];
-//            d[1]=d[2];
-//            d[2]=d[3];
-//            d[3]=d[0];
-//            d[0]=d[1];
-//            d[1]=d[2];
-//            d[2]=d[3];
-//            d[3]=d[0];
-//            d[0]=d[1];
-//            d[1]=d[2];
-//            d[2]=d[3];
-//            d[3]=d[0];
-//            d[0]=d[1];
-//            d[1]=d[2];
-//            d[2]=d[3];
-//            d[3]=d[0];
-//        }
-//
-//        return d;
-//    }
+    @Benchmark
+    public int[] sameArrayInstance() {
+        // In JMH we can't have instance variables, so we're creating instance of another class here and all benchmark
+        // code is there. Overhead is insignificant.
+        return new AssignClassInstanceTester().sameArrayInstance();
+    }
 
     @Benchmark
     public int[] sameArrayClass() {
@@ -291,10 +241,3 @@ public class Assign {
     }
 }
 
-class AssignTester {
-
-    static int a1 = 1, a2 = 2, a3 = 3, a4 = 4, b[] = {1, 2, 3, 4};
-    int c1 = 1, c2 = 2, c3 = 3, c4 = 4, d[] = {1, 2, 3, 4};
-
-
-}
