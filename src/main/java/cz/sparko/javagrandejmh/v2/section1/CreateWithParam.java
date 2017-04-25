@@ -59,7 +59,7 @@ import org.openjdk.jmh.annotations.State;
 
 @SuppressWarnings("ALL")
 @State(Scope.Benchmark)
-public class Create {
+public class CreateWithParam {
     private static final int INITSIZE = 10000;
 
     @Param({"1", "2", "4", "8", "16", "32", "64", "128"})
@@ -87,7 +87,7 @@ public class Create {
         int n = certainty;
         long k[] = new long[n];
 
-        for (int i=0;i<INITSIZE;i++) {
+        for (int i = 0; i < INITSIZE; i++) {
             /* @formatter:off */
             k = new long[n]; k = new long[n]; k = new long[n]; k = new long[n];
             k = new long[n]; k = new long[n]; k = new long[n]; k = new long[n];
@@ -97,5 +97,39 @@ public class Create {
         }
 
         return k;
+    }
+
+    @Benchmark
+    public float[] arrayFloat() {
+        int n = certainty;
+        float c[] = new float[n];
+
+        for (int i = 0; i < INITSIZE; i++) {
+            /* @formatter:off */
+            c = new float[n]; c = new float[n]; c = new float[n]; c = new float[n];
+            c = new float[n]; c = new float[n]; c = new float[n]; c = new float[n];
+            c = new float[n]; c = new float[n]; c = new float[n]; c = new float[n];
+            c = new float[n]; c = new float[n]; c = new float[n]; c = new float[n];
+            /* @formatter:on */
+        }
+
+        return c;
+    }
+
+    @Benchmark
+    public Object[] arrayObject() {
+        int n = certainty;
+        Object d[] = new Object[n];
+
+        for (int i = 0; i < INITSIZE; i++) {
+            /* @formatter:off */
+            d=new Object[n]; d=new Object[n]; d=new Object[n]; d=new Object[n];
+            d=new Object[n]; d=new Object[n]; d=new Object[n]; d=new Object[n];
+            d=new Object[n]; d=new Object[n]; d=new Object[n]; d=new Object[n];
+            d=new Object[n]; d=new Object[n]; d=new Object[n]; d=new Object[n];
+            /* @formatter:on */
+        }
+
+        return d;
     }
 }
