@@ -55,7 +55,8 @@ public class Cast {
         return f1;
     }
 
-    // this is beaten by compiler optimizations
+    // beaten by compiler optimizations
+    //TODO: solve compiler optimizations
 //    @Benchmark
     public double intDouble() {
         int i1 = 6;
