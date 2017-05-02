@@ -56,6 +56,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.infra.Blackhole;
 
 @SuppressWarnings("ALL")
 @State(Scope.Benchmark)
@@ -66,70 +67,38 @@ public class CreateBenchMulti {
     public int certainty;
 
     @Benchmark
-    public int[] arrayInt() {
+    public void arrayInt(Blackhole bh) {
         int n = certainty;
-        int j[] = new int[n];
 
         for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            j = new int[n]; j = new int[n]; j = new int[n]; j = new int[n];
-            j = new int[n]; j = new int[n]; j = new int[n]; j = new int[n];
-            j = new int[n]; j = new int[n]; j = new int[n]; j = new int[n];
-            j = new int[n]; j = new int[n]; j = new int[n]; j = new int[n];
-            /* @formatter:on */
+            bh.consume(new int[n]);
         }
-
-        return j;
     }
 
     @Benchmark
-    public long[] arrayLong() {
+    public void arrayLong(Blackhole bh) {
         int n = certainty;
-        long k[] = new long[n];
 
         for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            k = new long[n]; k = new long[n]; k = new long[n]; k = new long[n];
-            k = new long[n]; k = new long[n]; k = new long[n]; k = new long[n];
-            k = new long[n]; k = new long[n]; k = new long[n]; k = new long[n];
-            k = new long[n]; k = new long[n]; k = new long[n]; k = new long[n];
-            /* @formatter:on */
+            bh.consume(new long[n]);
         }
-
-        return k;
     }
 
     @Benchmark
-    public float[] arrayFloat() {
+    public void arrayFloat(Blackhole bh) {
         int n = certainty;
-        float c[] = new float[n];
 
         for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            c = new float[n]; c = new float[n]; c = new float[n]; c = new float[n];
-            c = new float[n]; c = new float[n]; c = new float[n]; c = new float[n];
-            c = new float[n]; c = new float[n]; c = new float[n]; c = new float[n];
-            c = new float[n]; c = new float[n]; c = new float[n]; c = new float[n];
-            /* @formatter:on */
+            bh.consume(new float[n]);
         }
-
-        return c;
     }
 
     @Benchmark
-    public Object[] arrayObject() {
+    public void arrayObject(Blackhole bh) {
         int n = certainty;
-        Object d[] = new Object[n];
 
         for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            d=new Object[n]; d=new Object[n]; d=new Object[n]; d=new Object[n];
-            d=new Object[n]; d=new Object[n]; d=new Object[n]; d=new Object[n];
-            d=new Object[n]; d=new Object[n]; d=new Object[n]; d=new Object[n];
-            d=new Object[n]; d=new Object[n]; d=new Object[n]; d=new Object[n];
-            /* @formatter:on */
+            bh.consume(new Object[n]);
         }
-
-        return d;
     }
 }

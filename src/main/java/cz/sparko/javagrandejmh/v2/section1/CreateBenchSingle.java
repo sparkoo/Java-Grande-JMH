@@ -53,227 +53,129 @@
 package cz.sparko.javagrandejmh.v2.section1;
 
 import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.infra.Blackhole;
 
 @SuppressWarnings("ALL")
 public class CreateBenchSingle {
     private static final int INITSIZE = 10000;
 
     @Benchmark
-    public Object objectBase() {
-        Object o = new Object();
-
+    public void objectBase(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            o = new Object(); o = new Object(); o = new Object(); o = new Object();
-            o = new Object(); o = new Object(); o = new Object(); o = new Object();
-            o = new Object(); o = new Object(); o = new Object(); o = new Object();
-            o = new Object(); o = new Object(); o = new Object(); o = new Object();
-            /* @formatter:on */
+            bh.consume(new Object());
         }
-
-        return o;
     }
 
     @Benchmark
-    public A objectSimple() {
+    public void objectSimple(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new A());
+        }
+    }
+
+    @Benchmark
+    public void objectSimpleConstructor(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new AA());
+        }
+    }
+
+    @Benchmark
+    public void objectSimple1Field(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new A1());
+        }
+    }
+
+    @Benchmark
+    public void objectSimple2Field(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new A2());
+        }
+    }
+
+    @Benchmark
+    public void objectSimple4Field(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new A4());
+        }
+    }
+
+    @Benchmark
+    public void objectSimple4fField(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new A4F());
+        }
+    }
+
+    @Benchmark
+    public void objectSimple4LField(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new A4L());
+        }
+    }
+
+    @Benchmark
+    public void objectSublclass(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new B());
+        }
+    }
+
+    @Benchmark
+    public void objectComplex(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new AB());
+        }
+    }
+
+    @Benchmark
+    public void objectComplexConstructor(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(new ABC());
+        }
+    }
+
+    static class A {
+    }
+
+    static class AA {
+        public AA() {
+        }
+    }
+
+    static class A1 {
+        int a;
+    }
+
+    static class A2 {
+        int a, b;
+    }
+
+    static class A4 {
+        int a, b, c, d;
+    }
+
+    static class A4L {
+        long a, b, c, d;
+    }
+
+    static class A4F {
+        float a, b, c, d;
+    }
+
+    static class AB {
         A a = new A();
+    }
 
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            a = new A(); a = new A(); a = new A(); a = new A();
-            a = new A(); a = new A(); a = new A(); a = new A();
-            a = new A(); a = new A(); a = new A(); a = new A();
-            a = new A(); a = new A(); a = new A(); a = new A();
-            /* @formatter:on */
+    static class ABC {
+        A a;
+
+        public ABC() {
+            a = new A();
         }
-
-        return a;
     }
 
-    @Benchmark
-    public AA objectSimpleConstructor() {
-        AA aa = new AA();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            aa = new AA(); aa = new AA(); aa = new AA(); aa = new AA();
-            aa = new AA(); aa = new AA(); aa = new AA(); aa = new AA();
-            aa = new AA(); aa = new AA(); aa = new AA(); aa = new AA();
-            aa = new AA(); aa = new AA(); aa = new AA(); aa = new AA();
-            /* @formatter:on */
-        }
-
-        return aa;
+    static class B extends A {
     }
-
-    @Benchmark
-    public A1 objectSimple1Field() {
-        A1 a1 = new A1();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            a1 = new A1(); a1 = new A1(); a1 = new A1(); a1 = new A1();
-            a1 = new A1(); a1 = new A1(); a1 = new A1(); a1 = new A1();
-            a1 = new A1(); a1 = new A1(); a1 = new A1(); a1 = new A1();
-            a1 = new A1(); a1 = new A1(); a1 = new A1(); a1 = new A1();
-            /* @formatter:on */
-        }
-
-        return a1;
-    }
-
-    @Benchmark
-    public A2 objectSimple2Field() {
-        A2 a2 = new A2();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            a2 = new A2(); a2 = new A2(); a2 = new A2(); a2 = new A2();
-            a2 = new A2(); a2 = new A2(); a2 = new A2(); a2 = new A2();
-            a2 = new A2(); a2 = new A2(); a2 = new A2(); a2 = new A2();
-            a2 = new A2(); a2 = new A2(); a2 = new A2(); a2 = new A2();
-            /* @formatter:on */
-        }
-
-        return a2;
-    }
-
-    @Benchmark
-    public A4 objectSimple4Field() {
-        A4 a4 = new A4();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            a4 = new A4(); a4 = new A4(); a4 = new A4(); a4 = new A4();
-            a4 = new A4(); a4 = new A4(); a4 = new A4(); a4 = new A4();
-            a4 = new A4(); a4 = new A4(); a4 = new A4(); a4 = new A4();
-            a4 = new A4(); a4 = new A4(); a4 = new A4(); a4 = new A4();
-            /* @formatter:on */
-        }
-
-        return a4;
-    }
-
-    @Benchmark
-    public A4F objectSimple4fField() {
-        A4F a4f = new A4F();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            a4f = new A4F(); a4f = new A4F(); a4f = new A4F(); a4f = new A4F();
-            a4f = new A4F(); a4f = new A4F(); a4f = new A4F(); a4f = new A4F();
-            a4f = new A4F(); a4f = new A4F(); a4f = new A4F(); a4f = new A4F();
-            a4f = new A4F(); a4f = new A4F(); a4f = new A4F(); a4f = new A4F();
-            /* @formatter:on */
-        }
-
-        return a4f;
-    }
-
-    @Benchmark
-    public A4L objectSimple4LField() {
-        A4L a4l = new A4L();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            a4l = new A4L(); a4l = new A4L(); a4l = new A4L(); a4l = new A4L();
-            a4l = new A4L(); a4l = new A4L(); a4l = new A4L(); a4l = new A4L();
-            a4l = new A4L(); a4l = new A4L(); a4l = new A4L(); a4l = new A4L();
-            a4l = new A4L(); a4l = new A4L(); a4l = new A4L(); a4l = new A4L();
-            /* @formatter:on */
-        }
-
-        return a4l;
-    }
-
-    @Benchmark
-    public B objectSublclass() {
-        B b = new B();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            b = new B(); b = new B(); b = new B(); b = new B();
-            b = new B(); b = new B(); b = new B(); b = new B();
-            b = new B(); b = new B(); b = new B(); b = new B();
-            b = new B(); b = new B(); b = new B(); b = new B();
-            /* @formatter:on */
-        }
-
-        return b;
-    }
-
-    @Benchmark
-    public AB objectComplex() {
-        AB ab = new AB();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            ab = new AB(); ab = new AB(); ab = new AB(); ab = new AB();
-            ab = new AB(); ab = new AB(); ab = new AB(); ab = new AB();
-            ab = new AB(); ab = new AB(); ab = new AB(); ab = new AB();
-            ab = new AB(); ab = new AB(); ab = new AB(); ab = new AB();
-            /* @formatter:on */
-        }
-
-        return ab;
-    }
-
-    @Benchmark
-    public ABC objectComplexConstructor() {
-        ABC abc = new ABC();
-
-        for (int i = 0; i < INITSIZE; i++) {
-            /* @formatter:off */
-            abc = new ABC(); abc = new ABC(); abc = new ABC(); abc = new ABC();
-            abc = new ABC(); abc = new ABC(); abc = new ABC(); abc = new ABC();
-            abc = new ABC(); abc = new ABC(); abc = new ABC(); abc = new ABC();
-            abc = new ABC(); abc = new ABC(); abc = new ABC(); abc = new ABC();
-            /* @formatter:on */
-        }
-
-        return abc;
-    }
-}
-
-class A {
-}
-
-class AA {
-    public AA() {
-    }
-}
-
-class A1 {
-    int a;
-}
-
-class A2 {
-    int a, b;
-}
-
-class A4 {
-    int a, b, c, d;
-}
-
-class A4L {
-    long a, b, c, d;
-}
-
-class A4F {
-    float a, b, c, d;
-}
-
-class AB {
-    A a = new A();
-}
-
-class ABC {
-    A a;
-
-    public ABC() {
-        a = new A();
-    }
-}
-
-class B extends A {
 }
