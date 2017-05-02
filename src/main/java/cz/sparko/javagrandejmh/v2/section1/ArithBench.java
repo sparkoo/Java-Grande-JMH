@@ -26,20 +26,20 @@ import org.openjdk.jmh.annotations.*;
 public class ArithBench {
     private static final int INITSIZE = 10000;
 
-    int i1 = 1, i2 = -2, i3 = 3, i4 = -4;
-    long l1 = 1L, l2 = -2L, l3 = 3L, l4 = -4L;
-    float f1 = 1.0F, f2 = -2.0F, f3 = 3.0F, f4 = -4.0F;
-    double d1 = 1.0D, d2 = -2.0D, d3 = 3.0D, d4 = -4.0D;
+    private int i1 = 1, i2 = -2, i3 = 3, i4 = -4;
+    private long l1 = 1L, l2 = -2L, l3 = 3L, l4 = -4L;
+    private float f1 = 1.0F, f2 = -2.0F, f3 = 3.0F, f4 = -4.0F;
+    private double d1 = 1.0D, d2 = -2.0D, d3 = 3.0D, d4 = -4.0D;
 
     // vars for multiply benchmarks
-    float fm1 = 13.37F, fm2 = (float) Math.PI, fm3 = 1.0F / fm1;
-    double dm1 = 13.37D, dm2 = Math.PI, dm3 = 1.0D / dm1;
+    private float fm1 = 13.37F, fm2 = (float) Math.PI, fm3 = 1.0F / fm1;
+    private double dm1 = 13.37D, dm2 = Math.PI, dm3 = 1.0D / dm1;
 
     // vars for divide benchmarks
-    int id1 = Integer.MAX_VALUE, id2 = 3;
-    long ld1 = Long.MAX_VALUE, ld2 = 3L;
-    float fd1 = 13.37F, fd2 = (float) Math.PI, fd3 = 1.0F / fd1;
-    double dd1 = 13.37, dd2 = Math.PI, dd3 = 1.0D / dd1;
+    private int id1 = Integer.MAX_VALUE, id2 = 3;
+    private long ld1 = Long.MAX_VALUE, ld2 = 3L;
+    private float fd1 = 13.37F, fd2 = (float) Math.PI, fd3 = 1.0F / fd1;
+    private double dd1 = 13.37, dd2 = Math.PI, dd3 = 1.0D / dd1;
 
     @Benchmark
     public int addInt() {
