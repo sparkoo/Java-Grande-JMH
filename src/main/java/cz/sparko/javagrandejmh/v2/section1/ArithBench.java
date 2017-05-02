@@ -22,26 +22,28 @@ package cz.sparko.javagrandejmh.v2.section1;
 
 import org.openjdk.jmh.annotations.*;
 
+@State(Scope.Benchmark)
 public class ArithBench {
     private static final int INITSIZE = 10000;
 
+    int i1 = 1, i2 = -2, i3 = 3, i4 = -4;
+    long l1 = 1L, l2 = -2L, l3 = 3L, l4 = -4L;
+    float f1 = 1.0F, f2 = -2.0F, f3 = 3.0F, f4 = -4.0F;
+    double d1 = 1.0D, d2 = -2.0D, d3 = 3.0D, d4 = -4.0D;
+
+    // vars for multiply benchmarks
+    float fm1 = 13.37F, fm2 = (float) Math.PI, fm3 = 1.0F / fm1;
+    double dm1 = 13.37D, dm2 = Math.PI, dm3 = 1.0D / dm1;
+
+    // vars for divide benchmarks
+    int id1 = Integer.MAX_VALUE, id2 = 3;
+    long ld1 = Long.MAX_VALUE, ld2 = 3L;
+    float fd1 = 13.37F, fd2 = (float) Math.PI, fd3 = 1.0F / fd1;
+    double dd1 = 13.37, dd2 = Math.PI, dd3 = 1.0D / dd1;
+
     @Benchmark
     public int addInt() {
-        int i1 = 1, i2 = -2, i3 = 3, i4 = -4;
-
         for (int i = 0; i < INITSIZE; i++) {
-            i2 += i1;
-            i3 += i2;
-            i4 += i3;
-            i1 += i4;
-            i2 += i1;
-            i3 += i2;
-            i4 += i3;
-            i1 += i4;
-            i2 += i1;
-            i3 += i2;
-            i4 += i3;
-            i1 += i4;
             i2 += i1;
             i3 += i2;
             i4 += i3;
@@ -53,21 +55,7 @@ public class ArithBench {
 
     @Benchmark
     public long addLong() {
-        long l1 = 1L, l2 = -2L, l3 = 3L, l4 = -4L;
-
         for (int i = 0; i < INITSIZE; i++) {
-            l2 += l1;
-            l3 += l2;
-            l4 += l3;
-            l1 += l4;
-            l2 += l1;
-            l3 += l2;
-            l4 += l3;
-            l1 += l4;
-            l2 += l1;
-            l3 += l2;
-            l4 += l3;
-            l1 += l4;
             l2 += l1;
             l3 += l2;
             l4 += l3;
@@ -79,21 +67,7 @@ public class ArithBench {
 
     @Benchmark
     public float addFloat() {
-        float f1 = 1.0F, f2 = -2.0F, f3 = 3.0F, f4 = -4.0F;
-
         for (int i = 0; i < INITSIZE; i++) {
-            f2 += f1;
-            f3 += f2;
-            f4 += f3;
-            f1 += f4;
-            f2 += f1;
-            f3 += f2;
-            f4 += f3;
-            f1 += f4;
-            f2 += f1;
-            f3 += f2;
-            f4 += f3;
-            f1 += f4;
             f2 += f1;
             f3 += f2;
             f4 += f3;
@@ -105,21 +79,7 @@ public class ArithBench {
 
     @Benchmark
     public double addDouble() {
-        double d1 = 1.0D, d2 = -2.0D, d3 = 3.0D, d4 = -4.0D;
-
         for (int i = 0; i < INITSIZE; i++) {
-            d2 += d1;
-            d3 += d2;
-            d4 += d3;
-            d1 += d4;
-            d2 += d1;
-            d3 += d2;
-            d4 += d3;
-            d1 += d4;
-            d2 += d1;
-            d3 += d2;
-            d4 += d3;
-            d1 += d4;
             d2 += d1;
             d3 += d2;
             d4 += d3;
@@ -131,21 +91,7 @@ public class ArithBench {
 
     @Benchmark
     public int multiplyInt() {
-        int i1 = 1, i2 = -2, i3 = 3, i4 = -4;
-
         for (int i = 0; i < INITSIZE; i++) {
-            i2 *= i1;
-            i3 *= i2;
-            i4 *= i3;
-            i1 *= i4;
-            i2 *= i1;
-            i3 *= i2;
-            i4 *= i3;
-            i1 *= i4;
-            i2 *= i1;
-            i3 *= i2;
-            i4 *= i3;
-            i1 *= i4;
             i2 *= i1;
             i3 *= i2;
             i4 *= i3;
@@ -157,21 +103,7 @@ public class ArithBench {
 
     @Benchmark
     public long multiplyLong() {
-        long l1 = 1L, l2 = -2L, l3 = 3L, l4 = -4L;
-
         for (int i = 0; i < INITSIZE; i++) {
-            l2 *= l1;
-            l3 *= l2;
-            l4 *= l3;
-            l1 *= l4;
-            l2 *= l1;
-            l3 *= l2;
-            l4 *= l3;
-            l1 *= l4;
-            l2 *= l1;
-            l3 *= l2;
-            l4 *= l3;
-            l1 *= l4;
             l2 *= l1;
             l3 *= l2;
             l4 *= l3;
@@ -183,164 +115,67 @@ public class ArithBench {
 
     @Benchmark
     public float multiplyFloat() {
-        float f1 = 13.37F, f2 = (float) Math.PI, f3 = 1.0F / f1;
-
         for (int i = 0; i < INITSIZE; i++) {
-            f1 *= f2;
-            f1 *= f3;
-            f1 *= f2;
-            f1 *= f3;
-            f1 *= f2;
-            f1 *= f3;
-            f1 *= f2;
-            f1 *= f3;
-            f1 *= f2;
-            f1 *= f3;
-            f1 *= f2;
-            f1 *= f3;
-            f1 *= f2;
-            f1 *= f3;
-            f1 *= f2;
-            f1 *= f3;
+            fm1 *= fm2;
+            fm1 *= fm3;
         }
 
-        return f1;
+        return fm1;
     }
 
 
     @Benchmark
     public double multiplyDouble() {
-        double d1 = 13.37D, d2 = Math.PI, d3 = 1.0D / d1;
 
         for (int i = 0; i < INITSIZE; i++) {
-            d1 *= d2;
-            d1 *= d3;
-            d1 *= d2;
-            d1 *= d3;
-            d1 *= d2;
-            d1 *= d3;
-            d1 *= d2;
-            d1 *= d3;
-            d1 *= d2;
-            d1 *= d3;
-            d1 *= d2;
-            d1 *= d3;
-            d1 *= d2;
-            d1 *= d3;
-            d1 *= d2;
-            d1 *= d3;
+            dm1 *= dm2;
+            dm1 *= dm3;
         }
 
-        return d1;
+        return dm1;
     }
 
     @Benchmark
     public int divideInt() {
-        int i1 = Integer.MAX_VALUE, i2 = 3;
-
         for (int i = 0; i < INITSIZE; i++) {
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            i1 /= i2;
-            if (i1 == 0) {
-                i1 = Integer.MAX_VALUE;
+            id1 /= id2;
+            if (id1 == 0) {
+                id1 = Integer.MAX_VALUE;
             }
         }
 
-        return i1;
+        return id1;
     }
 
     @Benchmark
     public long divideLong() {
-        long l1 = Long.MAX_VALUE, l2 = 3L;
-
         for (int i = 0; i < INITSIZE; i++) {
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            l1 /= l2;
-            if (l1 == 0) {
-                l1 = Long.MAX_VALUE;
+            ld1 /= ld2;
+            if (ld1 == 0) {
+                ld1 = Long.MAX_VALUE;
             }
         }
 
-        return l1;
+        return ld1;
     }
 
     @Benchmark
     public float divideFloat() throws InterruptedException {
-        float f1 = 13.37F, f2 = (float) Math.PI, f3 = 1.0F / f1;
-
         for (int i = 0; i < INITSIZE; i++) {
-            f1 /= f2;
-            f1 /= f3;
-            f1 /= f2;
-            f1 /= f3;
-            f1 /= f2;
-            f1 /= f3;
-            f1 /= f2;
-            f1 /= f3;
-            f1 /= f2;
-            f1 /= f3;
-            f1 /= f2;
-            f1 /= f3;
-            f1 /= f2;
-            f1 /= f3;
-            f1 /= f2;
-            f1 /= f3;
+            fd1 /= fd2;
+            fd1 /= fd3;
         }
 
-        return f1;
+        return fd1;
     }
 
     @Benchmark
     public double divideDouble() {
-        double d1 = 13.37, d2 = Math.PI, d3 = 1.0D / d1;
-
         for (int i = 0; i < INITSIZE; i++) {
-            d1 /= d2;
-            d1 /= d3;
-            d1 /= d2;
-            d1 /= d3;
-            d1 /= d2;
-            d1 /= d3;
-            d1 /= d2;
-            d1 /= d3;
-            d1 /= d2;
-            d1 /= d3;
-            d1 /= d2;
-            d1 /= d3;
-            d1 /= d2;
-            d1 /= d3;
-            d1 /= d2;
-            d1 /= d3;
+            dd1 /= dd2;
+            dd1 /= dd3;
         }
 
-        return d1;
+        return dd1;
     }
 }
