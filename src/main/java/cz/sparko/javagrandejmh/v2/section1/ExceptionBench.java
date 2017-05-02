@@ -66,7 +66,6 @@ public class ExceptionBench {
     }
 
     private void exceptthrow() throws Exception {
-        Exception except = new Exception();
-        throw except;
+        throw new Exception();
     }
 }
