@@ -55,16 +55,14 @@
 package cz.sparko.javagrandejmh.v2.section1;
 
 import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 
 @SuppressWarnings("ALL")
 @State(Scope.Benchmark)
 public class MethodBench {
-    @Param({"10000", "20000", "40000", "80000", "160000", "320000", "640000", "1280000", "2560000", "5120000",
-            "10240000", "20480000", "40960000", "81920000", "163840000", "327680000", "655360000"})
-    private int size;
+
+    private static final int INITSIZE = 100000;
 
     static int k = 0;
 
@@ -73,183 +71,56 @@ public class MethodBench {
 
     @Benchmark
     public void sameInstance() {
-        for (int i = 0; i < size; i++) {
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
-            instance_method();
+        for (int i = 0; i < INITSIZE; i++) {
             instance_method();
         }
     }
 
     @Benchmark
     public void sameSynchronizedInstance() {
-        for (int i = 0; i < size; i++) {
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
-            synch_instance_method();
+        for (int i = 0; i < INITSIZE; i++) {
             synch_instance_method();
         }
     }
 
     @Benchmark
     public void sameFinalInstance() {
-        for (int i = 0; i < size; i++) {
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
-            final_instance_method();
+        for (int i = 0; i < INITSIZE; i++) {
             final_instance_method();
         }
     }
 
     @Benchmark
     public void sameClass() {
-        for (int i = 0; i < size; i++) {
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
-            class_method();
+        for (int i = 0; i < INITSIZE; i++) {
             class_method();
         }
     }
 
     @Benchmark
     public void sameSynchronizedClass() {
-        for (int i = 0; i < size; i++) {
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
-            synch_class_method();
+        for (int i = 0; i < INITSIZE; i++) {
             synch_class_method();
         }
     }
 
     @Benchmark
     public void otherInstance() {
-        for (int i = 0; i < size; i++) {
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
-            mt.instance_method();
+        for (int i = 0; i < INITSIZE; i++) {
             mt.instance_method();
         }
     }
 
     @Benchmark
     public void otherInstanceOfAbstract() {
-        for (int i = 0; i < size; i++) {
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
-            mt2.instance_method();
+        for (int i = 0; i < INITSIZE; i++) {
             mt2.instance_method();
         }
     }
 
     @Benchmark
     public void otherClass() {
-        for (int i = 0; i < size; i++) {
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
-            MethodTester.class_method();
+        for (int i = 0; i < INITSIZE; i++) {
             MethodTester.class_method();
         }
     }
