@@ -33,8 +33,8 @@ public class SerialBenchLinkListWrite {
         try {
             FileOutputStream fout = new FileOutputStream(serialFile);
             out = new ObjectOutputStream(fout);
-        } catch (IOException ignored) {
-            ignored.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
@@ -43,8 +43,8 @@ public class SerialBenchLinkListWrite {
         try {
             out.flush();
             out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
@@ -60,7 +60,8 @@ public class SerialBenchLinkListWrite {
             for (int i = 0; i < size; i++) {
                 out.writeObject(base[i]);
             }
-        } catch (IOException ignored) {
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
 
         return base;

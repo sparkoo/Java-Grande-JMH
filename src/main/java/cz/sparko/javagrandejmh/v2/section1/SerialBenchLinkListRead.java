@@ -36,8 +36,8 @@ public class SerialBenchLinkListRead {
             }
             out.flush();
             out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
@@ -46,8 +46,8 @@ public class SerialBenchLinkListRead {
         try {
             fin = new FileInputStream(serialFile);
             in = new ObjectInputStream(fin);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
@@ -56,8 +56,8 @@ public class SerialBenchLinkListRead {
         try {
             fin.close();
             in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
@@ -69,12 +69,12 @@ public class SerialBenchLinkListRead {
 
     @Benchmark
     public Item[] readingLinklist() {
-        try {
-            for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
+            try {
                 base[i] = (Item) in.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
             }
-        } catch (Exception ignored) {
-            ignored.printStackTrace();
         }
 
         return base;
