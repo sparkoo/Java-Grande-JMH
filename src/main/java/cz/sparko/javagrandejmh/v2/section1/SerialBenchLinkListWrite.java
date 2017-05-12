@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 @State(Scope.Benchmark)
 public class SerialBenchLinkListWrite {
 
-    private static final int SIZE = 1000;
+    private static final int SIZE = 100;
     private static final int LINKLIST_LENGTH = 100;
 
     private Item linklistBases[] = null;
