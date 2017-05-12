@@ -4,6 +4,8 @@ import org.openjdk.jmh.annotations.*;
 
 import java.io.*;
 
+import static org.junit.Assert.assertTrue;
+
 @State(Scope.Benchmark)
 public class SerialBenchLinkListRead {
 
@@ -43,7 +45,7 @@ public class SerialBenchLinkListRead {
     }
 
     @Setup(Level.Invocation)
-    public void setUpIteration() {
+    public void setUpInvocation() {
         linklistBases = new Item[SIZE];
         try {
             fin = new FileInputStream(serialFile);
@@ -54,7 +56,7 @@ public class SerialBenchLinkListRead {
     }
 
     @TearDown(Level.Invocation)
-    public void tearDownIteration() {
+    public void tearDownInvocation() {
         linklistBases = null;
         try {
             fin.close();
@@ -62,12 +64,12 @@ public class SerialBenchLinkListRead {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+        assertTrue(serialFile.exists());
     }
 
     @TearDown
     public void tearDownBenchmark() {
-        //noinspection ResultOfMethodCallIgnored
-        serialFile.delete();
+        assertTrue(serialFile.delete());
     }
 
     @Benchmark
@@ -85,7 +87,7 @@ public class SerialBenchLinkListRead {
         Item next;
         int poss;
 
-        public void add() {
+        private void add() {
             if (curListSize < LINKLIST_LENGTH) {
                 next = new Item();
                 curListSize++;
