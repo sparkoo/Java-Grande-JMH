@@ -40,7 +40,7 @@ public class SerialBenchBinaryTreeWrite {
         assertTrue(serialFile.exists());
     }
 
-    @TearDown
+    @TearDown(Level.Invocation)
     public void tearDownBenchmark() {
         try {
             outtree.flush();
