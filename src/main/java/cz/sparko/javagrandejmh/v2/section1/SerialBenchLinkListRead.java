@@ -7,32 +7,33 @@ import java.io.*;
 @State(Scope.Benchmark)
 public class SerialBenchLinkListRead {
 
-    private final int size = 5120;
+    private static final int SIZE = 1000;
+    private static final int LINKLIST_LENGTH = 100;
 
-    private static int listSize = 0;
-    private Item base[] = null;
+    private Item linklistBases[] = null;
     private ObjectInputStream in = null;
     private FileInputStream fin = null;
     private File serialFile;
-    private static final int LENGTH = 100;
+
+    private static int curListSize = 0;
 
     @Setup
     public void setUpBenchmark() {
         serialFile = new File("serial1.out");
-        listSize = 0;
+        curListSize = 0;
 
-        base = new Item[size];
-        for (int i = 0; i < size; i++) {
-            listSize = 0;
-            base[i] = new Item();
-            base[i].add();
+        linklistBases = new Item[SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            curListSize = 0;
+            linklistBases[i] = new Item();
+            linklistBases[i].add();
         }
 
         try {
             FileOutputStream fout = new FileOutputStream(serialFile);
             ObjectOutputStream out = new ObjectOutputStream(fout);
-            for (int i = 0; i < size; i++) {
-                out.writeObject(base[i]);
+            for (int i = 0; i < SIZE; i++) {
+                out.writeObject(linklistBases[i]);
             }
             out.flush();
             out.close();
@@ -43,6 +44,7 @@ public class SerialBenchLinkListRead {
 
     @Setup(Level.Invocation)
     public void setUpIteration() {
+        linklistBases = new Item[SIZE];
         try {
             fin = new FileInputStream(serialFile);
             in = new ObjectInputStream(fin);
@@ -53,6 +55,7 @@ public class SerialBenchLinkListRead {
 
     @TearDown(Level.Invocation)
     public void tearDownIteration() {
+        linklistBases = null;
         try {
             fin.close();
             in.close();
@@ -68,16 +71,14 @@ public class SerialBenchLinkListRead {
     }
 
     @Benchmark
-    public Item[] readingLinklist() {
-        for (int i = 0; i < size; i++) {
+    public void readingLinklist() {
+        for (int i = 0; i < SIZE; i++) {
             try {
-                base[i] = (Item) in.readObject();
+                linklistBases[i] = (Item) in.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
-
-        return base;
     }
 
     static class Item implements Serializable {
@@ -85,10 +86,10 @@ public class SerialBenchLinkListRead {
         int poss;
 
         public void add() {
-            if (listSize < LENGTH) {
+            if (curListSize < LINKLIST_LENGTH) {
                 next = new Item();
-                listSize++;
-                next.poss = listSize;
+                curListSize++;
+                next.poss = curListSize;
                 next.add();
             }
         }

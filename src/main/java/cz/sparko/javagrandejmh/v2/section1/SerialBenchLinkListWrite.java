@@ -7,23 +7,24 @@ import java.io.*;
 @State(Scope.Benchmark)
 public class SerialBenchLinkListWrite {
 
-    private final int size = 5120;
+    private static final int SIZE = 1000;
+    private static final int LINKLIST_LENGTH = 100;
 
-    private static int listSize = 0;
-    private Item base[] = null;
+    private Item linklistBases[] = null;
     private ObjectOutputStream out = null;
     private File serialFile;
-    private static final int LENGTH = 100;
+
+    private static int curListSize = 0;
 
     @Setup
     public void setUpBenchmark() {
-        listSize = 0;
+        curListSize = 0;
 
-        base = new Item[size];
-        for (int i = 0; i < size; i++) {
-            listSize = 0;
-            base[i] = new Item();
-            base[i].add();
+        linklistBases = new Item[SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            curListSize = 0;
+            linklistBases[i] = new Item();
+            linklistBases[i].add();
         }
     }
 
@@ -55,16 +56,14 @@ public class SerialBenchLinkListWrite {
     }
 
     @Benchmark
-    public Item[] writingLinklist() {
+    public void writingLinklist() {
         try {
-            for (int i = 0; i < size; i++) {
-                out.writeObject(base[i]);
+            for (int i = 0; i < SIZE; i++) {
+                out.writeObject(linklistBases[i]);
             }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-
-        return base;
     }
 
     static class Item implements Serializable {
@@ -72,10 +71,10 @@ public class SerialBenchLinkListWrite {
         int poss;
 
         void add() {
-            if (listSize < LENGTH) {
+            if (curListSize < LINKLIST_LENGTH) {
                 next = new Item();
-                listSize++;
-                next.poss = listSize;
+                curListSize++;
+                next.poss = curListSize;
                 next.add();
             }
         }
