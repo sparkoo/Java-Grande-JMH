@@ -69,6 +69,7 @@ public class MethodBench {
     MethodTester mt = new MethodTester();
     MethodTester2 mt2 = new MethodTester2();
 
+    //TODO: beaten by optimizations in ojdk9
     @Benchmark
     public void sameInstance() {
         for (int i = 0; i < INITSIZE; i++) {
@@ -83,6 +84,7 @@ public class MethodBench {
         }
     }
 
+    //TODO: beaten by optimizations in ojdk9
     @Benchmark
     public void sameFinalInstance() {
         for (int i = 0; i < INITSIZE; i++) {
@@ -90,6 +92,7 @@ public class MethodBench {
         }
     }
 
+    //TODO: beaten by optimizations in ojdk9
     @Benchmark
     public void sameClass() {
         for (int i = 0; i < INITSIZE; i++) {
@@ -104,6 +107,7 @@ public class MethodBench {
         }
     }
 
+    //TODO: beaten by optimizations in ojdk9
     @Benchmark
     public void otherInstance() {
         for (int i = 0; i < INITSIZE; i++) {
@@ -111,6 +115,7 @@ public class MethodBench {
         }
     }
 
+    //TODO: beaten by optimizations in ojdk9
     @Benchmark
     public void otherInstanceOfAbstract() {
         for (int i = 0; i < INITSIZE; i++) {
@@ -118,6 +123,7 @@ public class MethodBench {
         }
     }
 
+    //TODO: beaten by optimizations in ojdk9
     @Benchmark
     public void otherClass() {
         for (int i = 0; i < INITSIZE; i++) {
