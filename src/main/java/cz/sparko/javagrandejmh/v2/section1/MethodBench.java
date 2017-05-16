@@ -57,6 +57,7 @@ package cz.sparko.javagrandejmh.v2.section1;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.infra.Blackhole;
 
 @SuppressWarnings("ALL")
 @State(Scope.Benchmark)
@@ -69,98 +70,92 @@ public class MethodBench {
     MethodTester mt = new MethodTester();
     MethodTester2 mt2 = new MethodTester2();
 
-    //TODO: beaten by optimizations in ojdk9
     @Benchmark
-    public void sameInstance() {
+    public void sameInstance(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            instance_method();
+            bh.consume(instance_method());
         }
     }
 
     @Benchmark
-    public void sameSynchronizedInstance() {
+    public void sameSynchronizedInstance(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            synch_instance_method();
-        }
-    }
-
-    //TODO: beaten by optimizations in ojdk9
-    @Benchmark
-    public void sameFinalInstance() {
-        for (int i = 0; i < INITSIZE; i++) {
-            final_instance_method();
-        }
-    }
-
-    //TODO: beaten by optimizations in ojdk9
-    @Benchmark
-    public void sameClass() {
-        for (int i = 0; i < INITSIZE; i++) {
-            class_method();
+            bh.consume(synch_instance_method());
         }
     }
 
     @Benchmark
-    public void sameSynchronizedClass() {
+    public void sameFinalInstance(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            synch_class_method();
+            bh.consume(final_instance_method());
         }
     }
 
-    //TODO: beaten by optimizations in ojdk9
     @Benchmark
-    public void otherInstance() {
+    public void sameClass(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            mt.instance_method();
+            bh.consume(class_method());
         }
     }
 
-    //TODO: beaten by optimizations in ojdk9
     @Benchmark
-    public void otherInstanceOfAbstract() {
+    public void sameSynchronizedClass(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            mt2.instance_method();
+            bh.consume(synch_class_method());
         }
     }
 
-    //TODO: beaten by optimizations in ojdk9
     @Benchmark
-    public void otherClass() {
+    public void otherInstance(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            MethodTester.class_method();
+            bh.consume(mt.instance_method());
+        }
+    }
+
+    @Benchmark
+    public void otherInstanceOfAbstract(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(mt2.instance_method());
+        }
+    }
+
+    @Benchmark
+    public void otherClass(Blackhole bh) {
+        for (int i = 0; i < INITSIZE; i++) {
+            bh.consume(MethodTester.class_method());
         }
     }
 
 
-    public void instance_method() {
-        k++;
+    public int instance_method() {
+        return k++;
     }
 
-    synchronized public void synch_instance_method() {
-        k++;
+    synchronized public int synch_instance_method() {
+        return k++;
     }
 
-    private final void final_instance_method() {
-        k++;
+    private final int final_instance_method() {
+        return k++;
     }
 
-    private static void class_method() {
-        k++;
+    private static int class_method() {
+        return k++;
     }
 
-    private synchronized static void synch_class_method() {
-        k++;
+    private synchronized static int synch_class_method() {
+        return k++;
     }
 
     static class MethodTester {
         static int k = 0;
 
-        void instance_method() {
-            k++;
+        int instance_method() {
+            return k++;
         }
 
-        static void class_method() {
-            k++;
+        static int class_method() {
+            return k++;
         }
 
     }
@@ -168,12 +163,12 @@ public class MethodBench {
     static abstract class AbstractMethodTester {
         static int k = 0;
 
-        public abstract void instance_method();
+        public abstract int instance_method();
     }
 
     static class MethodTester2 extends AbstractMethodTester {
-        public void instance_method() {
-            k++;
+        public int instance_method() {
+            return k++;
         }
 
     }
