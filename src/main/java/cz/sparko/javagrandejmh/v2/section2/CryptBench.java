@@ -61,7 +61,7 @@ public class CryptBench {
     }
 
     @Benchmark
-    public void kernel() {
+    public void idea() {
         cipher_idea(plain1, crypt1, Z);     // Encrypt plain1.
         cipher_idea(crypt1, plain2, DK);    // Decrypt.
     }
