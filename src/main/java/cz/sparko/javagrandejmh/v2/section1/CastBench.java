@@ -26,8 +26,7 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
 
 @State(Scope.Benchmark)
-public class CastBench {
-    private static final int INITSIZE = 10000;
+public class CastBench implements Section1Bench {
 
     private int i1 = 6;
     private long l1 = 6;

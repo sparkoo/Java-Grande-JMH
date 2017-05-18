@@ -7,7 +7,7 @@ import java.io.*;
 import static org.junit.Assert.assertTrue;
 
 @State(Scope.Benchmark)
-public class SerialBenchLinkListWrite {
+public class SerialBenchLinkListWrite implements Section1Bench {
 
     private static final int SIZE = 100;
     private static final int LINKLIST_LENGTH = 100;

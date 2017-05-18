@@ -73,9 +73,7 @@ import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
 @State(Scope.Benchmark)
-public class LoopBench {
-
-    private static final int INITSIZE = 10000;
+public class LoopBench implements Section1Bench {
 
     @Benchmark
     public void forLoop(Blackhole bh) {

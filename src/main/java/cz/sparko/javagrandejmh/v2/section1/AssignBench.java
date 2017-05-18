@@ -26,8 +26,7 @@ import org.openjdk.jmh.annotations.State;
 
 @SuppressWarnings("ALL")
 @State(Scope.Thread)
-public class AssignBench {
-    static final int INITSIZE = 10000;
+public class AssignBench implements Section1Bench {
 
     static int a1 = 1, a2 = 2, a3 = 3, a4 = 4, b[] = {1, 2, 3, 4};
     private int c1 = 1, c2 = 2, c3 = 3, c4 = 4, d[] = {1, 2, 3, 4};

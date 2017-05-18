@@ -61,7 +61,7 @@ import org.openjdk.jmh.infra.Blackhole;
 
 @SuppressWarnings("ALL")
 @State(Scope.Benchmark)
-public class MethodBench {
+public class MethodBench implements Section1Bench {
 
     private static final int INITSIZE = 100000;
 

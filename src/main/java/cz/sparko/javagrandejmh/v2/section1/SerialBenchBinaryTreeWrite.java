@@ -7,7 +7,7 @@ import java.io.*;
 import static org.junit.Assert.assertTrue;
 
 @State(Scope.Benchmark)
-public class SerialBenchBinaryTreeWrite {
+public class SerialBenchBinaryTreeWrite implements Section1Bench {
     private static final int SIZE = 10;
 
     private ItemTree treeBases[] = null;

@@ -8,7 +8,7 @@ import java.util.Vector;
 import static org.junit.Assert.assertTrue;
 
 @State(Scope.Benchmark)
-public class SerialBenchVectorRead {
+public class SerialBenchVectorRead implements Section1Bench {
     private static final int SIZE = 100;
     private static final int LENGTH = 100;
 

@@ -56,8 +56,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.infra.Blackhole;
 
 @SuppressWarnings("ALL")
-public class CreateBenchSingle {
-    private static final int INITSIZE = 10000;
+public class CreateBenchSingle implements Section1Bench {
 
     @Benchmark
     public void objectBase(Blackhole bh) {

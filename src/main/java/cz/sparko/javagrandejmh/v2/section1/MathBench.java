@@ -27,10 +27,8 @@ import org.openjdk.jmh.infra.Blackhole;
 
 @SuppressWarnings("ALL")
 @State(Scope.Benchmark)
-public class MathBench {
-    private static final int INITSIZE = 10000;
+public class MathBench implements Section1Bench {
 
-    double time;
     int i1 = 1, i2 = 2, i3 = 3, i4 = 4;
     long l1 = 1, l2 = 2, l3 = 3, l4 = 4;
     float f1 = 1.0F, f2 = 2.0F, f3 = 3.0F, f4 = 4.0F;

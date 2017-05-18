@@ -23,8 +23,7 @@ package cz.sparko.javagrandejmh.v2.section1;
 import org.openjdk.jmh.annotations.*;
 
 @State(Scope.Benchmark)
-public class ArithBench {
-    private static final int INITSIZE = 10000;
+public class ArithBench implements Section1Bench {
 
     private int i1 = 1, i2 = -2, i3 = 3, i4 = -4;
     private long l1 = 1L, l2 = -2L, l3 = 3L, l4 = -4L;

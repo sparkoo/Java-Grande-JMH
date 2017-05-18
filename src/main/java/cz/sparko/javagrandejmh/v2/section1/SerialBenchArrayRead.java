@@ -7,7 +7,7 @@ import java.io.*;
 import static org.junit.Assert.assertTrue;
 
 @State(Scope.Benchmark)
-public class SerialBenchArrayRead {
+public class SerialBenchArrayRead implements Section1Bench {
     private static final int LENGTH = 100;
     private static final int SIZE = 100;
 

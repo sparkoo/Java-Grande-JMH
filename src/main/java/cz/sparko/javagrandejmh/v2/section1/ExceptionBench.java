@@ -26,9 +26,7 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
 
 @State(Scope.Benchmark)
-public class ExceptionBench {
-
-    private static final int INITSIZE = 10000;
+public class ExceptionBench implements Section1Bench {
 
     private Exception except = new Exception();
 

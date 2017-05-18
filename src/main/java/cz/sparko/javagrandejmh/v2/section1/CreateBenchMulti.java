@@ -60,8 +60,7 @@ import org.openjdk.jmh.infra.Blackhole;
 
 @SuppressWarnings("ALL")
 @State(Scope.Benchmark)
-public class CreateBenchMulti {
-    private static final int INITSIZE = 10000;
+public class CreateBenchMulti implements Section1Bench {
 
     @Param({"1", "2", "4", "8", "16", "32", "64", "128"})
     public int certainty;
