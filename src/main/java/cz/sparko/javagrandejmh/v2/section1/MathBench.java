@@ -37,313 +37,263 @@ public class MathBench {
     double d1 = 1.0D, d2 = 2.0D, d3 = 3.0D, d4 = 4.0D;
 
     @Benchmark
-    public int absInt() {
+    public void absInt(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            i1 = Math.abs(i2);
-            i2 = Math.abs(i3);
-            i3 = Math.abs(i4);
-            i4 = Math.abs(i1);
+            bh.consume(Math.abs(i2));
+            bh.consume(Math.abs(i3));
+            bh.consume(Math.abs(i4));
+            bh.consume(Math.abs(i1));
         }
-
-        return i1;
     }
 
     @Benchmark
-    public long absLong() {
+    public void absLong(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            l1 = Math.abs(l2);
-            l2 = Math.abs(l3);
-            l3 = Math.abs(l4);
-            l4 = Math.abs(l1);
+            bh.consume(Math.abs(l2));
+            bh.consume(Math.abs(l3));
+            bh.consume(Math.abs(l4));
+            bh.consume(Math.abs(l1));
         }
-
-        return l1;
     }
 
     @Benchmark
-    public float absFloat() {
+    public void absFloat(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            f1 = Math.abs(f2);
-            f2 = Math.abs(f3);
-            f3 = Math.abs(f4);
-            f4 = Math.abs(f1);
+            bh.consume(Math.abs(f2));
+            bh.consume(Math.abs(f3));
+            bh.consume(Math.abs(f4));
+            bh.consume(Math.abs(f1));
         }
-
-        return f1;
     }
 
     @Benchmark
-    public double absDouble() {
+    public void absDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.abs(d2);
-            d2 = Math.abs(d3);
-            d3 = Math.abs(d4);
-            d4 = Math.abs(d1);
+            bh.consume(Math.abs(d2));
+            bh.consume(Math.abs(d3));
+            bh.consume(Math.abs(d4));
+            bh.consume(Math.abs(d1));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public int maxInt() {
+    public void maxInt(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            i1 = Math.max(i2, i3);
-            i2 = Math.max(i3, i4);
-            i3 = Math.max(i4, i1);
-            i4 = Math.max(i1, i2);
+            bh.consume(Math.max(i2, i3));
+            bh.consume(Math.max(i3, i4));
+            bh.consume(Math.max(i4, i1));
+            bh.consume(Math.max(i1, i2));
         }
-        return i1;
     }
 
     @Benchmark
-    public long maxLong() {
+    public void maxLong(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            l1 = Math.max(l2, l3);
-            l2 = Math.max(l3, l4);
-            l3 = Math.max(l4, l1);
-            l4 = Math.max(l1, l2);
+            bh.consume(Math.max(l2, l3));
+            bh.consume(Math.max(l3, l4));
+            bh.consume(Math.max(l4, l1));
+            bh.consume(Math.max(l1, l2));
         }
-        return l1;
     }
 
     @Benchmark
-    public float maxFloat() {
+    public void maxFloat(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            f1 = Math.max(f2, f3);
-            f2 = Math.max(f3, f4);
-            f3 = Math.max(f4, f1);
-            f4 = Math.max(f1, f2);
+            bh.consume(Math.max(f2, f3));
+            bh.consume(Math.max(f3, f4));
+            bh.consume(Math.max(f4, f1));
+            bh.consume(Math.max(f1, f2));
         }
-
-        return f1;
     }
 
     @Benchmark
-    public double maxDouble() {
+    public void maxDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.max(d2, d3);
-            d2 = Math.max(d3, d4);
-            d3 = Math.max(d4, d1);
-            d4 = Math.max(d1, d2);
+            bh.consume(Math.max(d2, d3));
+            bh.consume(Math.max(d3, d4));
+            bh.consume(Math.max(d4, d1));
+            bh.consume(Math.max(d1, d2));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public int minInt() {
+    public void minInt(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            i1 = Math.min(i2, i3);
-            i2 = Math.min(i3, i4);
-            i3 = Math.min(i4, i1);
-            i4 = Math.min(i1, i2);
+            bh.consume(Math.min(i2, i3));
+            bh.consume(Math.min(i3, i4));
+            bh.consume(Math.min(i4, i1));
+            bh.consume(Math.min(i1, i2));
         }
-
-        return i1;
     }
 
     @Benchmark
-    public long minLong() {
+    public void minLong(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            l1 = Math.min(l2, l3);
-            l2 = Math.min(l3, l4);
-            l3 = Math.min(l4, l1);
-            l4 = Math.min(l1, l2);
+            bh.consume(Math.min(l2, l3));
+            bh.consume(Math.min(l3, l4));
+            bh.consume(Math.min(l4, l1));
+            bh.consume(Math.min(l1, l2));
         }
-
-        return l1;
     }
 
     @Benchmark
-    public float minFloat() {
+    public void minFloat(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            f1 = Math.min(f2, f3);
-            f2 = Math.min(f3, f4);
-            f3 = Math.min(f4, f1);
-            f4 = Math.min(f1, f2);
+            bh.consume(Math.min(f2, f3));
+            bh.consume(Math.min(f3, f4));
+            bh.consume(Math.min(f4, f1));
+            bh.consume(Math.min(f1, f2));
         }
-
-        return f1;
     }
 
     @Benchmark
-    public double minDouble() {
+    public void minDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.min(d2, d3);
-            d2 = Math.min(d3, d4);
-            d3 = Math.min(d4, d1);
-            d4 = Math.min(d1, d2);
+            bh.consume(Math.min(d2, d3));
+            bh.consume(Math.min(d3, d4));
+            bh.consume(Math.min(d4, d1));
+            bh.consume(Math.min(d1, d2));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double sinDouble() {
+    public void sinDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.sin(d2);
-            d2 = Math.sin(d3);
-            d3 = Math.sin(d4);
-            d4 = Math.sin(d1);
+            bh.consume(Math.sin(d2));
+            bh.consume(Math.sin(d3));
+            bh.consume(Math.sin(d4));
+            bh.consume(Math.sin(d1));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double cosDouble() {
+    public void cosDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.cos(d2);
-            d2 = Math.cos(d3);
-            d3 = Math.cos(d4);
-            d4 = Math.cos(d1);
+            bh.consume(Math.cos(d2));
+            bh.consume(Math.cos(d3));
+            bh.consume(Math.cos(d4));
+            bh.consume(Math.cos(d1));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double tanDouble() {
+    public void tanDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.tan(d2);
-            d2 = Math.tan(d3);
-            d3 = Math.tan(d4);
-            d4 = Math.tan(d1);
+            bh.consume(Math.tan(d2));
+            bh.consume(Math.tan(d3));
+            bh.consume(Math.tan(d4));
+            bh.consume(Math.tan(d1));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double asinDouble() {
+    public void asinDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.asin(d2 * 0.5D);
-            d2 = Math.asin(d3 * 0.5D);
-            d3 = Math.asin(d4 * 0.5D);
-            d4 = Math.asin(d1 * 0.5D);
+            bh.consume(Math.asin(d2 * 0.5D));
+            bh.consume(Math.asin(d3 * 0.5D));
+            bh.consume(Math.asin(d4 * 0.5D));
+            bh.consume(Math.asin(d1 * 0.5D));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double acosDouble() {
+    public void acosDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.acos(d2 * 0.5D);
-            d2 = Math.acos(d3 * 0.5D);
-            d3 = Math.acos(d4 * 0.5D);
-            d4 = Math.acos(d1 * 0.5D);
+            bh.consume(Math.acos(d2 * 0.5D));
+            bh.consume(Math.acos(d3 * 0.5D));
+            bh.consume(Math.acos(d4 * 0.5D));
+            bh.consume(Math.acos(d1 * 0.5D));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double atanDouble() {
+    public void atanDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.atan(d2 * 0.5D);
-            d2 = Math.atan(d3 * 0.5D);
-            d3 = Math.atan(d4 * 0.5D);
-            d4 = Math.atan(d1 * 0.5D);
+            bh.consume(Math.atan(d2 * 0.5D));
+            bh.consume(Math.atan(d3 * 0.5D));
+            bh.consume(Math.atan(d4 * 0.5D));
+            bh.consume(Math.atan(d1 * 0.5D));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double atan2Double() {
+    public void atan2Double(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.atan2(d2, 2.0D);
-            d2 = Math.atan2(d3, 2.0D);
-            d3 = Math.atan2(d4, 2.0D);
-            d4 = Math.atan2(d1, 2.0D);
+            bh.consume(Math.atan2(d2, 2.0D));
+            bh.consume(Math.atan2(d3, 2.0D));
+            bh.consume(Math.atan2(d4, 2.0D));
+            bh.consume(Math.atan2(d1, 2.0D));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double floorDouble() {
+    public void floorDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.floor(d2);
-            d2 = Math.floor(d3);
-            d3 = Math.floor(d4);
-            d4 = Math.floor(d1);
+            bh.consume(Math.floor(d2));
+            bh.consume(Math.floor(d3));
+            bh.consume(Math.floor(d4));
+            bh.consume(Math.floor(d1));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double ceilDouble() {
+    public void ceilDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.ceil(d2);
-            d2 = Math.ceil(d3);
-            d3 = Math.ceil(d4);
-            d4 = Math.ceil(d1);
+            bh.consume(Math.ceil(d2));
+            bh.consume(Math.ceil(d3));
+            bh.consume(Math.ceil(d4));
+            bh.consume(Math.ceil(d1));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double sqrtDouble() {
+    public void sqrtDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.sqrt(d2);
-            d2 = Math.sqrt(d3);
-            d3 = Math.sqrt(d4);
-            d4 = Math.sqrt(d1);
+            bh.consume(Math.sqrt(d2));
+            bh.consume(Math.sqrt(d3));
+            bh.consume(Math.sqrt(d4));
+            bh.consume(Math.sqrt(d1));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double expDouble() {
+    public void expDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.exp(d2 - 2.0D);
-            d2 = Math.exp(d3 - 2.0D);
-            d3 = Math.exp(d4 - 2.0D);
-            d4 = Math.exp(d1 - 2.0D);
+            bh.consume(Math.exp(d2 - 2.0D));
+            bh.consume(Math.exp(d3 - 2.0D));
+            bh.consume(Math.exp(d4 - 2.0D));
+            bh.consume(Math.exp(d1 - 2.0D));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double logDouble() {
+    public void logDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.log(d2 + 2.0D);
-            d2 = Math.log(d3 + 2.0D);
-            d3 = Math.log(d4 + 2.0D);
-            d4 = Math.log(d1 + 2.0D);
+            bh.consume(Math.log(d2 + 2.0D));
+            bh.consume(Math.log(d3 + 2.0D));
+            bh.consume(Math.log(d4 + 2.0D));
+            bh.consume(Math.log(d1 + 2.0D));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double powDouble() {
+    public void powDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.pow(d2, d3);
-            d2 = Math.pow(d3, d4);
-            d3 = Math.pow(d4, d1);
-            d4 = Math.pow(d1, d2);
+            bh.consume(Math.pow(d2, d3));
+            bh.consume(Math.pow(d3, d4));
+            bh.consume(Math.pow(d4, d1));
+            bh.consume(Math.pow(d1, d2));
         }
-
-        return d1;
     }
 
     @Benchmark
-    public double rintDouble() {
+    public void rintDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.rint(d2);
-            d2 = Math.rint(d3);
-            d3 = Math.rint(d4);
-            d4 = Math.rint(d1);
+            bh.consume(Math.rint(d2));
+            bh.consume(Math.rint(d3));
+            bh.consume(Math.rint(d4));
+            bh.consume(Math.rint(d1));
         }
-
-        return d1;
     }
 
     @Benchmark
@@ -354,38 +304,32 @@ public class MathBench {
     }
 
     @Benchmark
-    public float roundFloat() {
+    public void roundFloat(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            i1 = Math.round((float) i2);
-            i2 = Math.round((float) i3);
-            i1 = Math.round((float) i4);
-            i4 = Math.round((float) i1);
+            bh.consume(Math.round((float) i2));
+            bh.consume(Math.round((float) i3));
+            bh.consume(Math.round((float) i4));
+            bh.consume(Math.round((float) i1));
         }
-
-        return i1;
     }
 
     @Benchmark
-    public double roundDouble() {
+    public void roundDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            l1 = Math.round((double) l2);
-            l2 = Math.round((double) l3);
-            l1 = Math.round((double) l4);
-            l4 = Math.round((double) l1);
+            bh.consume(Math.round((double) l2));
+            bh.consume(Math.round((double) l3));
+            bh.consume(Math.round((double) l4));
+            bh.consume(Math.round((double) l1));
         }
-
-        return l1;
     }
 
     @Benchmark
-    public double ieeeRemainderDouble() {
+    public void ieeeRemainderDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = Math.IEEEremainder(d2, d3);
-            d2 = Math.IEEEremainder(d3, d4);
-            d3 = Math.IEEEremainder(d4, d1);
-            d4 = Math.IEEEremainder(d1, d2);
+            bh.consume(Math.IEEEremainder(d2, d3));
+            bh.consume(Math.IEEEremainder(d3, d4));
+            bh.consume(Math.IEEEremainder(d4, d1));
+            bh.consume(Math.IEEEremainder(d1, d2));
         }
-
-        return d1;
     }
 }
