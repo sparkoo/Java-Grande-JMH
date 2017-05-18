@@ -23,6 +23,7 @@ package cz.sparko.javagrandejmh.v2.section1;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.infra.Blackhole;
 
 @State(Scope.Benchmark)
 public class CastBench {
@@ -34,42 +35,34 @@ public class CastBench {
     private double d1 = 0.0D;
 
     @Benchmark
-    public float intFloat() {
+    public void intFloat(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            f1 = (float) i1;
-            i1 = (int) f1;
+            bh.consume((float) i1);
+            bh.consume((int) f1);
         }
-
-        return f1;
     }
 
     @Benchmark
-    public double intDouble() {
+    public void intDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = (double) i1;
-            i1 = (int) d1;
+            bh.consume((double) i1);
+            bh.consume((int) d1);
         }
-
-        return d1;
     }
 
     @Benchmark
-    public float longFloat() {
+    public void longFloat(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            f1 = (float) l1;
-            l1 = (long) f1;
+            bh.consume((float) l1);
+            bh.consume((long) f1);
         }
-
-        return f1;
     }
 
     @Benchmark
-    public double longDouble() {
+    public void longDouble(Blackhole bh) {
         for (int i = 0; i < INITSIZE; i++) {
-            d1 = (double) l1;
-            l1 = (long) d1;
+            bh.consume((double) l1);
+            bh.consume((long) d1);
         }
-
-        return d1;
     }
 }
