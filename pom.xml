@@ -8,7 +8,35 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Java Grande JMH benchmark suite</name>
+    <name>Java Grande JMH</name>
+    <description>Java Grande benchmark JMH port</description>
+    <url>https://github.com/sparkoo/java-grande-jmh</url>
+    <developers>
+        <developer>
+            <name>sparkoo</name>
+            <url>https://github.com/sparkoo</url>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <url>https://github.com/sparkoo/java-grande-jmh/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/sparkoo/java-grande-jmh</url>
+        <connection>scm:git:git://github.com/sparkoo/java-grande-jmh.git</connection>
+        <developerConnection>scm:git:git@github.com:sparkoo/java-grande-jmh.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <prerequisites>
         <maven>3.0</maven>
