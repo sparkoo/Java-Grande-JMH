@@ -4,7 +4,7 @@
 
     <groupId>java_grande-jmh</groupId>
     <artifactId>java_grande-jmh</artifactId>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Java Grande JMH</name>
@@ -34,7 +34,7 @@
         <url>https://github.com/sparkoo/java-grande-jmh</url>
         <connection>scm:git:git://github.com/sparkoo/java-grande-jmh.git</connection>
         <developerConnection>scm:git:git@github.com:sparkoo/java-grande-jmh.git</developerConnection>
-        <tag>v0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <prerequisites>
