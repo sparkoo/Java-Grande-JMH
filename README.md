@@ -9,6 +9,6 @@ All suites are rewritten to be as close as possible to original **Java Grande**.
 This port is published under MIT license -> free to use, share or modify.
 
 ## CI
-devel: [![Build Status](https://travis-ci.org/sparkoo/Java-Grande-JMH.svg?branch=devel)](https://travis-ci.org/sparkoo/speakup)
+devel: [![Build Status](https://travis-ci.org/sparkoo/Java-Grande-JMH.svg?branch=devel)](https://travis-ci.org/sparkoo/Java-Grande-JMH)
 
-master: [![Build Status](https://travis-ci.org/sparkoo/Java-Grande-JMH.svg?branch=master)](https://travis-ci.org/sparkoo/speakup)
+master: [![Build Status](https://travis-ci.org/sparkoo/Java-Grande-JMH.svg?branch=master)](https://travis-ci.org/sparkoo/Java-Grande-JMH)
